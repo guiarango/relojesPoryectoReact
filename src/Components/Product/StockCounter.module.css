@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.button {
+  margin: 0 10px;
+  min-width: 30px;
+  padding: 4px 6px;
+  border: 1px solid black;
+  font-weight: bold;
+  background-color: blanchedalmond;
+}
+
+.counter {
+  margin-bottom: 0 !important;
+}
+
+@media (min-width: 500px) {
+  .button {
+    margin: 0 15px;
+    min-width: 40px;
+    padding: 5px 10px;
+  }
+}

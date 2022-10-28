@@ -1,0 +1,39 @@
+.cartWidgetContainer {
+  position: fixed;
+  background-color: black;
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.cartWidgetContainer:hover .cartIcon {
+  transform: scale(1.1);
+}
+
+.cartIcon {
+  font-size: 1.2rem;
+  padding: 1px;
+  color: white;
+}
+
+@media (min-width: 1000px) {
+  .cartWidgetContainer {
+    width: 50px;
+    height: 50px;
+    right: 40px;
+    bottom: 40px;
+  }
+  .cartIcon {
+    font-size: 1.8rem;
+    padding: 3px;
+    color: white;
+  }
+}
