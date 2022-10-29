@@ -9,7 +9,13 @@ function NavBarComponent() {
   return (
     <Navbar bg="primary" variant="dark" expand="lg" sticky="top">
       <Container fluid>
-        <Navbar.Brand href="#">Logo</Navbar.Brand>
+        <Navbar.Brand href="#">
+          <img
+            src="/images/iconos/logo-relojes.png"
+            style={{ width: 120 }}
+            alt="logo-principal"
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
