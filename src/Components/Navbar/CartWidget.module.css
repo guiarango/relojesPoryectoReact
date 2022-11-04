@@ -24,6 +24,19 @@
   color: white;
 }
 
+.numberOfItems {
+  font-size: 12px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  z-index: 10;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  height: 20px;
+  width: 20px;
+}
+
 @media (min-width: 1000px) {
   .cartWidgetContainer {
     width: 50px;
@@ -35,5 +48,13 @@
     font-size: 1.8rem;
     padding: 3px;
     color: white;
+  }
+
+  .numberOfItems {
+    font-size: 16px;
+    top: -10px;
+    right: -10px;
+    height: 30px;
+    width: 30px;
   }
 }

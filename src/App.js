@@ -1,14 +1,14 @@
 import "./App.css";
 import NavBarComponent from "./Components/Navbar/NavBarComponent";
-import CartWidget from "./Components/Navbar/CartWidget";
 import ItemCarousel from "./Components/ItemCarousel/ItemCarousel";
+import ItemListContainer from "./Components/Product/ItemListContainer";
 
 function App() {
   return (
     <div className="App">
       <NavBarComponent />
-      <CartWidget />
       <ItemCarousel />
+      <ItemListContainer greetings="Saludos CoderHouse" />
     </div>
   );
 }

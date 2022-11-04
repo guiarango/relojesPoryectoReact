@@ -4,10 +4,12 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import CartWidget from "./CartWidget";
 
 function NavBarComponent() {
   return (
     <Navbar bg="primary" variant="dark" expand="lg" sticky="top">
+      <CartWidget />
       <Container fluid>
         <Navbar.Brand href="#">
           <img
