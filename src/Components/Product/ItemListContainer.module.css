@@ -1,6 +1,35 @@
-.saludo {
-  font-size: 30px;
-  font-weight: bold;
-  background-color: blue;
-  color: white;
+.container {
+  width: 95%;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item {
+  width: 45%;
+  margin: 10px 5px;
+}
+
+@media (min-width: 600px) {
+  .container {
+    width: 90%;
+  }
+
+  .item {
+    width: 30%;
+    margin: 10px 5px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .container {
+    width: 80%;
+  }
+
+  .item {
+    width: 20%;
+    margin: 10px 5px;
+  }
 }

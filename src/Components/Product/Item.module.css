@@ -1,5 +1,6 @@
 .productItem {
   font-size: 14px;
+  text-align: center;
 }
 
 .productImage {
@@ -11,11 +12,16 @@
   margin-top: 10px;
 }
 
+.productCategory {
+  font-size: 14px !important;
+}
+
 .productPrice {
   display: inline-block;
   font-weight: bold;
   margin-right: 10px;
 }
+
 .productPrice::before {
   content: "$";
 }
@@ -41,6 +47,10 @@
 
   .productTitle {
     font-size: 25px !important;
+  }
+
+  .productCategory {
+    font-size: 18px !important;
   }
 
   .productPrice {

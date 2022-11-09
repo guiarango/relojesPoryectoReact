@@ -4,6 +4,9 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { LinkContainer } from "react-router-bootstrap";
+
+//COMPONENTS
 import CartWidget from "./CartWidget";
 
 function NavBarComponent() {
@@ -11,13 +14,15 @@ function NavBarComponent() {
     <Navbar bg="primary" variant="dark" expand="lg" sticky="top">
       <CartWidget />
       <Container fluid>
-        <Navbar.Brand href="#">
-          <img
-            src="/images/iconos/logo-relojes.png"
-            style={{ width: 120 }}
-            alt="logo-principal"
-          />
-        </Navbar.Brand>
+        <LinkContainer to="/">
+          <Navbar.Brand>
+            <img
+              src="/images/iconos/logo-relojes.png"
+              style={{ width: 120 }}
+              alt="logo-principal"
+            />
+          </Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -25,10 +30,19 @@ function NavBarComponent() {
             style={{ maxHeight: "150px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Hombre</Nav.Link>
-            <Nav.Link href="#action1">Mujer</Nav.Link>
-            <Nav.Link href="#action1">Niño</Nav.Link>
-            <Nav.Link href="#action1">Niña</Nav.Link>
+            <LinkContainer to="/category/1">
+              <Nav.Link>Hombre</Nav.Link>
+            </LinkContainer>
+
+            <LinkContainer to="/category/2">
+              <Nav.Link>Mujer</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/category/3">
+              <Nav.Link>Niño</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/category/4">
+              <Nav.Link>Niña</Nav.Link>
+            </LinkContainer>
           </Nav>
           <Form className="d-flex">
             <Form.Control
