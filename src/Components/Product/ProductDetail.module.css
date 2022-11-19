@@ -1,9 +1,7 @@
 .container {
-  margin-top: 20px;
+  margin: 20px auto;
   padding: 10px 0;
   width: 95%;
-  margin: auto;
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

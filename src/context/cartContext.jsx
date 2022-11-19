@@ -7,6 +7,7 @@ export function CartContextProvider(props) {
   let [numberOfItems, setNumberOfItems] = useState(0);
   let [totalBuy, setTotalBuy] = useState(0);
 
+  //Calcular total de la compra en el carrito
   const calculateTotalBuy = useCallback(() => {
     const arrayTotalBuy = itemsInCart.map((item) => item.count * item.precio);
     let totalBuy = arrayTotalBuy.reduce((previousValue, currentValue) => {
@@ -15,6 +16,7 @@ export function CartContextProvider(props) {
     return `$ ${totalBuy}`;
   }, [itemsInCart]);
 
+  //Calcular total de unidades en el carrito
   const sumAllItems = useCallback(() => {
     const arrayCount = itemsInCart.map((item) => item.count);
     let totalCount = arrayCount.reduce((previousValue, currentValue) => {
@@ -23,64 +25,47 @@ export function CartContextProvider(props) {
     return totalCount;
   }, [itemsInCart]);
 
+  //Actualizar total compra y unidades en carrito
   useEffect(() => {
     setNumberOfItems(sumAllItems());
     setTotalBuy(calculateTotalBuy());
+  }, [itemsInCart, calculateTotalBuy, sumAllItems]);
 
-    console.log("me ejecuto", itemsInCart);
-  }, [itemsInCart]);
-
+  //Agregar un item al carrito
   function addItemToCart(product) {
     const arrayNuevo = [...itemsInCart];
     const indexProductoEnArray = findProductIndex(product.id);
 
-    console.log(indexProductoEnArray);
-    if (indexProductoEnArray != -1) {
+    if (indexProductoEnArray !== -1) {
       arrayNuevo[indexProductoEnArray].count += product.count;
     } else {
       arrayNuevo.push(product);
     }
-
-    setItemsInCart(arrayNuevo);
-    // setNumberOfItems(sumAllItems());
-    // setTotalBuy(calculateTotalBuy());
-  }
-
-  function showItemsInCart() {
-    console.log(itemsInCart);
-  }
-
-  function removeItemInCart(id) {
-    const arrayNuevo = itemsInCart.filter((item) => item.id != id);
     setItemsInCart(arrayNuevo);
   }
 
-  // function sumAllItems() {
-  //     const arrayCount = itemsInCart.map((item) => item.count);
-  //     let totalCount = arrayCount.reduce((previousValue, currentValue) => {
-  //       return previousValue + currentValue;
-  //     }, 0);
-  //     return totalCount;
-  //   };
-
-  // function calculateTotalBuy() {
-  //   const arrayTotalBuy = itemsInCart.map((item) => item.count * item.precio);
-  //   let totalBuy = arrayTotalBuy.reduce((previousValue, currentValue) => {
-  //     return previousValue + currentValue;
-  //   }, 0);
-  //   return `$ ${totalBuy}`;
+  //Mostrar todos los items del carrito
+  // function showItemsInCart() {
+  //   console.log(itemsInCart);
   // }
 
+  //Remover un item del carrito
+  function removeItemInCart(id) {
+    const arrayNuevo = itemsInCart.filter((item) => item.id !== id);
+    setItemsInCart(arrayNuevo);
+  }
+
+  //Limpiar el carrito
   function clearCart() {
     setItemsInCart([]);
-    // setNumberOfItems(sumAllItems());
-    // setTotalBuy(calculateTotalBuy());
   }
 
+  //Encontrar el index de un producto en el carrito
   function findProductIndex(id) {
-    return itemsInCart.findIndex((item) => item.id == id);
+    return itemsInCart.findIndex((item) => item.id === id);
   }
 
+  //Sumar una unidad a un item del carrito
   function sumOneToItem(id) {
     const arrayNuevo = [...itemsInCart];
     const itemIndex = findProductIndex(id);
@@ -88,10 +73,8 @@ export function CartContextProvider(props) {
     if (arrayNuevo[itemIndex].count + 1 <= 10) arrayNuevo[itemIndex].count += 1;
 
     setItemsInCart(arrayNuevo);
-    // setNumberOfItems(sumAllItems());
-    // setTotalBuy(calculateTotalBuy());
   }
-
+  //Restar una unidad a un item del carrito
   function susOneToItem(id) {
     const arrayNuevo = [...itemsInCart];
     const itemIndex = findProductIndex(id);
@@ -99,19 +82,15 @@ export function CartContextProvider(props) {
     if (arrayNuevo[itemIndex].count - 1 >= 1) arrayNuevo[itemIndex].count -= 1;
 
     setItemsInCart(arrayNuevo);
-    // setNumberOfItems(sumAllItems());
-    // setTotalBuy(calculateTotalBuy());
   }
 
   const context = {
     itemsInCart,
     numberOfItems,
     totalBuy,
-    sumAllItems,
     clearCart,
     removeItemInCart,
     addItemToCart,
-    showItemsInCart,
     susOneToItem,
     sumOneToItem,
   };
