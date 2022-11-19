@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsCartFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 //COMPONENTS
 import classes from "./CartWidget.module.css";
 
+//CONTEXT
+import { cartContext } from "../../context/cartContext";
+
 function CartWidget() {
-  return (
-    <div className={classes.cartWidgetContainer}>
-      <div className={classes.numberOfItems}>1</div>
+  const miContext = useContext(cartContext);
+
+  const conteo = miContext.numberOfItems;
+
+  const cartWidget = (
+    <Link to="/cart" className={classes.cartWidgetContainer}>
+      <div className={classes.numberOfItems}>{conteo}</div>
       <BsCartFill className={classes.cartIcon} />
-    </div>
+    </Link>
   );
+
+  return <>{conteo > 0 && cartWidget}</>;
 }
 
 export default CartWidget;

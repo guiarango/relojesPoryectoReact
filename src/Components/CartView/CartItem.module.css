@@ -1,0 +1,40 @@
+.item {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.image {
+  height: 120px;
+}
+
+.infoContenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50%;
+}
+
+.inactive {
+  display: none;
+}
+
+.cartIcon {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+@media (min-width: 800px) {
+  .item {
+    height: 200px;
+  }
+
+  .image {
+    height: 170px;
+  }
+
+  .inactive {
+    display: flex;
+  }
+}

@@ -7,19 +7,24 @@ import ItemListContainer from "./Components/Product/ItemListContainer";
 import Home from "./Components/Home/Home";
 import ProductDetail from "./Components/Product/ProductDetail";
 import Footer from "./Components/Footer/Footer";
+import { CartContextProvider } from "./context/cartContext";
+import CartView from "./Components/CartView/Cart";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBarComponent />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/category/:id" element={<ItemListContainer />}></Route>
-        <Route path="/detail/:id" element={<ProductDetail />}></Route>
-        <Route path="*" element={<h1>Error 404</h1>}></Route>
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <CartContextProvider>
+      <BrowserRouter>
+        <NavBarComponent />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/category/:id" element={<ItemListContainer />}></Route>
+          <Route path="/detail/:id" element={<ProductDetail />}></Route>
+          <Route path="/cart" element={<CartView />}></Route>
+          <Route path="*" element={<h1>Error 404</h1>}></Route>
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </CartContextProvider>
   );
 }
 

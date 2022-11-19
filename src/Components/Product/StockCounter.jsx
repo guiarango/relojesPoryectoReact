@@ -1,27 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 import classes from "./StockCounter.module.css";
 
 function StockCounter(props) {
-  const [counter, setCounter] = useState(1);
-
-  function increaseOne() {
-    if (counter + 1 > 10) return;
-    setCounter(counter + 1);
-  }
-
-  function decreaseOne() {
-    if (counter - 1 < 1) return;
-    setCounter(counter - 1);
-  }
-
   return (
     <div className={classes.container}>
-      <button className={classes.button} onClick={decreaseOne}>
+      <button className={classes.button} onClick={props.susOneItem}>
         -
       </button>
-      <p className={classes.counter}>{counter}</p>
-      <button className={classes.button} onClick={increaseOne}>
+      <p className={classes.counter}>{props.counter}</p>
+      <button className={classes.button} onClick={props.sumOneItem}>
         +
       </button>
     </div>

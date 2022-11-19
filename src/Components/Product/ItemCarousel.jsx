@@ -37,14 +37,14 @@ function ItemCarousel(props) {
         loop={true}
         breakpoints={{
           800: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 20,
           },
           1000: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
           1200: {
-            slidesPerView: 5,
+            slidesPerView: 4,
           },
         }}
       >

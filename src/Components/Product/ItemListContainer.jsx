@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 //COMPONENTS
 import Item from "./Item";
+import LoaderPulse from "../Loaders/LoaderPulse";
 
 //STYLES
 import classes from "./ItemListContainer.module.css";
@@ -17,26 +18,33 @@ function ItemListContainer(props) {
   const [arrayProductos, setArrayProductos] = useState([]);
 
   useEffect(() => {
-    setArrayProductos(returnItemsByCategory(idCategory));
+    setArrayProductos([]);
+    setTimeout(() => {
+      setArrayProductos(returnItemsByCategory(idCategory));
+    }, 1000);
   }, [idCategory]);
 
   return (
     <div className={classes.container}>
-      {arrayProductos.map((producto) => {
-        return (
-          <Item
-            className={classes.item}
-            key={producto.id}
-            id={producto.id}
-            nombre={producto.nombre}
-            precio={producto.precio}
-            descuento={producto.descuento}
-            imagen={producto.imagen}
-            initialQuantity={producto.initialQuantity}
-            categoria={producto.categoria}
-          />
-        );
-      })}
+      {arrayProductos.length <= 0 ? (
+        <LoaderPulse />
+      ) : (
+        arrayProductos.map((producto) => {
+          return (
+            <Item
+              className={classes.item}
+              key={producto.id}
+              id={producto.id}
+              nombre={producto.nombre}
+              precio={producto.precio}
+              descuento={producto.descuento}
+              imagen={producto.imagen}
+              initialQuantity={producto.initialQuantity}
+              categoria={producto.categoria}
+            />
+          );
+        })
+      )}
     </div>
   );
 }

@@ -6,7 +6,6 @@
     "nombre": "Reloj 1",
     "precio": 100,
     "descuento": "10% OFF",
-    "initialQuantity": 1,
     "imagen": "https://http2.mlstatic.com/D_NQ_NP_708244-MLA51799505236_102022-V.webp"
   },
   {
@@ -16,7 +15,6 @@
     "nombre": "Reloj 2",
     "precio": 200,
     "descuento": "20% OFF",
-    "initialQuantity": 1,
     "imagen": "https://http2.mlstatic.com/D_NQ_NP_708321-MCO44278409357_122020-V.webp"
   },
   {
@@ -26,7 +24,6 @@
     "nombre": "Reloj 3",
     "precio": 300,
     "descuento": "30% OFF",
-    "initialQuantity": 1,
     "imagen": "https://http2.mlstatic.com/D_NQ_NP_764733-MCO45994355725_052021-V.webp"
   },
   {
@@ -36,7 +33,6 @@
     "nombre": "Reloj 4",
     "precio": 400,
     "descuento": "40% OFF",
-    "initialQuantity": 1,
     "imagen": "https://http2.mlstatic.com/D_NQ_NP_602177-MCO48270190977_112021-V.webp"
   },
   {
@@ -46,7 +42,6 @@
     "nombre": "Reloj 5",
     "precio": 500,
     "descuento": "50% OFF",
-    "initialQuantity": 1,
     "imagen": "https://http2.mlstatic.com/D_NQ_NP_724291-MLA47572197956_092021-V.webp"
   },
   {
@@ -56,7 +51,6 @@
     "nombre": "Reloj 6",
     "precio": 600,
     "descuento": "60% OFF",
-    "initialQuantity": 1,
     "imagen": "https://http2.mlstatic.com/D_NQ_NP_607429-MLA47514448251_092021-V.webp"
   },
   {
@@ -66,7 +60,6 @@
     "nombre": "Reloj 7",
     "precio": 700,
     "descuento": "70% OFF",
-    "initialQuantity": 1,
     "imagen": "https://http2.mlstatic.com/D_NQ_NP_868544-MCO47117888231_082021-V.webp"
   },
   {
@@ -76,7 +69,6 @@
     "nombre": "Reloj 8",
     "precio": 800,
     "descuento": "80% OFF",
-    "initialQuantity": 11,
     "imagen": "https://http2.mlstatic.com/D_NQ_NP_939136-MCO47118247004_082021-V.webp"
   }
 ]

@@ -32,7 +32,8 @@
   color: green;
 }
 
-.productAddCartButton {
+.productAddCartButton,
+.productGoToCart {
   width: 90%;
 }
 
