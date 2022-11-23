@@ -1,7 +1,7 @@
 // Import Swiper core and required modules
 import { Navigation, Pagination, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 //COMPONENTS
 import Item from "./Item";
@@ -16,14 +16,20 @@ import "swiper/css/scrollbar";
 import classes from "./ItemCarousel.module.css";
 
 //SERVICES
-import { returnAllItem } from "../../Services/returnProducts";
+// import { returnAllItem } from "../../Services/returnProducts";
+import { returnAllItem } from "../../Services/firestore";
 
 function ItemCarousel(props) {
   const [arrayProductos, setArrayProductos] = useState([]);
 
-  useEffect(() => {
-    setArrayProductos(returnAllItem());
+  const callProductsService = useCallback(async () => {
+    const result = await returnAllItem();
+    setArrayProductos(result);
   }, []);
+
+  useEffect(() => {
+    callProductsService();
+  }, [callProductsService]);
 
   return (
     <>

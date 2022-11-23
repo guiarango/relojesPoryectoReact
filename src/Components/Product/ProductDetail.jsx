@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 
 //STYLES
@@ -9,7 +9,7 @@ import classes from "./ProductDetail.module.css";
 import { cartContext } from "../../context/cartContext";
 
 //SERVICE
-import { returnSingleItem } from "../../Services/returnProducts";
+import { returnSingleItem } from "../../Services/firestore";
 
 //COMPONENT
 import LoaderRing from "../Loaders/LoaderRing";
@@ -25,12 +25,14 @@ function ProductDetail(props) {
   let [counterActive, setCounterActive] = useState(true);
   let [counter, setCounter] = useState(1);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setProduct("");
-      setProduct(returnSingleItem(productId));
-    }, 1000);
+  const callProductService = useCallback(async () => {
+    const result = await returnSingleItem(productId);
+    setProduct(result);
   }, [productId]);
+
+  useEffect(() => {
+    callProductService();
+  }, [productId, callProductService]);
 
   function sumOneItem() {
     let counterValue = counter + 1;

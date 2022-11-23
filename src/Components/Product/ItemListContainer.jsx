@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 
 //COMPONENTS
@@ -10,19 +10,21 @@ import LoaderPulse from "../Loaders/LoaderPulse";
 import classes from "./ItemListContainer.module.css";
 
 //SERVICES
-import { returnItemsByCategory } from "../../Services/returnProducts";
+import { returnItemsByCategory } from "../../Services/firestore";
 
 function ItemListContainer(props) {
   const params = useParams();
   const idCategory = params.id;
   const [arrayProductos, setArrayProductos] = useState([]);
 
-  useEffect(() => {
-    setArrayProductos([]);
-    setTimeout(() => {
-      setArrayProductos(returnItemsByCategory(idCategory));
-    }, 1000);
+  const callProductsService = useCallback(async () => {
+    const result = await returnItemsByCategory(idCategory);
+    setArrayProductos(result);
   }, [idCategory]);
+
+  useEffect(() => {
+    callProductsService();
+  }, [callProductsService]);
 
   return (
     <div className={classes.container}>
