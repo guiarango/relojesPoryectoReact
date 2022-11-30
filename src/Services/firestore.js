@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {
+  addDoc,
   getDocs,
   getFirestore,
   collection,
@@ -56,4 +57,10 @@ export async function returnItemsByCategory(idCategory) {
   });
 
   return productsArray;
+}
+
+export async function createOrder(order) {
+  const collectionRef = collection(DB, "orders");
+  const docOrder = await addDoc(collectionRef, order);
+  return docOrder.id;
 }

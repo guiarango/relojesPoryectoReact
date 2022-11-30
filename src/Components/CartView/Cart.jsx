@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //CONTEXT
 import { cartContext } from "../../context/cartContext";
@@ -10,12 +10,32 @@ import classes from "./Cart.module.css";
 //COMPONENT
 import CartList from "./CartList";
 import Button from "../UI/Button";
+import { createOrder } from "../../Services/firestore";
 
 function Cart() {
   const miContext = useContext(cartContext);
+  const navigate = useNavigate();
 
   function clearCart() {
     miContext.clearCart();
+  }
+
+  async function handleCheckout(event) {
+    const order = {
+      buyer: {
+        name: "Guillermo",
+        email: "guillermo@gmail.com",
+        phone: "123456789",
+      },
+      items: miContext.itemsInCart,
+      total: miContext.totalBuy,
+      date: new Date(),
+    };
+
+    const orderId = await createOrder(order);
+    miContext.clearCart();
+
+    navigate(`/thankyou/${orderId}`);
   }
 
   return (
@@ -32,6 +52,7 @@ function Cart() {
               {/* {miContext.totalBuy.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")} */}
             </span>
           </h2>
+          <Button onClick={handleCheckout}>Finalizar compra</Button>
           <Button onClick={clearCart}>Limpiar carrito</Button>
         </>
       ) : (
