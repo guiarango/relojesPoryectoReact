@@ -18,6 +18,7 @@ import classes from "./ItemCarousel.module.css";
 //SERVICES
 // import { returnAllItem } from "../../Services/returnProducts";
 import { returnAllItem } from "../../Services/firestore";
+import LoaderPulse from "../Loaders/LoaderPulse";
 
 function ItemCarousel(props) {
   const [arrayProductos, setArrayProductos] = useState([]);
@@ -33,42 +34,48 @@ function ItemCarousel(props) {
 
   return (
     <>
-      <h2 className={classes.title}>{props.titleCarousel}</h2>
-      <Swiper
-        className={classes.carousel}
-        modules={[Navigation, Pagination, A11y]}
-        spaceBetween={10}
-        slidesPerView={2}
-        navigation
-        loop={true}
-        breakpoints={{
-          800: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          1000: {
-            slidesPerView: 3,
-          },
-          1200: {
-            slidesPerView: 4,
-          },
-        }}
-      >
-        {arrayProductos.map((producto) => {
-          return (
-            <SwiperSlide key={producto.id}>
-              <Item
-                id={producto.id}
-                nombre={producto.nombre}
-                precio={producto.precio}
-                descuento={producto.descuento}
-                imagen={producto.imagen}
-                categoria={producto.categoria}
-              />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      {arrayProductos.length <= 0 ? (
+        <LoaderPulse className={classes.textCenter} />
+      ) : (
+        <>
+          <h2 className={classes.title}>{props.titleCarousel}</h2>
+          <Swiper
+            className={classes.carousel}
+            modules={[Navigation, Pagination, A11y]}
+            spaceBetween={10}
+            slidesPerView={2}
+            navigation
+            loop={true}
+            breakpoints={{
+              800: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1000: {
+                slidesPerView: 3,
+              },
+              1200: {
+                slidesPerView: 4,
+              },
+            }}
+          >
+            {arrayProductos.map((producto) => {
+              return (
+                <SwiperSlide key={producto.id}>
+                  <Item
+                    id={producto.id}
+                    nombre={producto.nombre}
+                    precio={producto.precio}
+                    descuento={producto.descuento}
+                    imagen={producto.imagen}
+                    categoria={producto.categoria}
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </>
+      )}
     </>
   );
 }

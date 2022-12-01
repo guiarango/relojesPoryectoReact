@@ -1,0 +1,59 @@
+.contenedorCategorias {
+  text-align: center;
+  margin: 40px 0 50px 0;
+}
+.titulosCategorias {
+  margin-bottom: 20px;
+}
+
+.contenedorImagenes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+.contenedorImagen {
+  position: relative;
+  width: 45%;
+  border: 1px solid black;
+}
+
+.imagen {
+  width: 100px;
+}
+
+.texto {
+  text-decoration: none;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 5, 5, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 800px) {
+  .imagen {
+    width: 150px;
+  }
+
+  .contenedorImagen {
+    width: 25%;
+  }
+
+  .contenedorImagen:hover .texto {
+    background-color: rgba(5, 5, 5, 0.4);
+    display: flex;
+  }
+
+  .texto {
+    display: none;
+  }
+}

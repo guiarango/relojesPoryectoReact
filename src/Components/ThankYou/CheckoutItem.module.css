@@ -1,0 +1,19 @@
+.item {
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+}
+.imagen {
+  width: 100px;
+}
+.texto {
+  margin-left: 10px;
+}
+
+@media (min-width: 650px) {
+  .imagen {
+    width: 150px;
+  }
+}

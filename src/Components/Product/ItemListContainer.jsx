@@ -34,14 +34,12 @@ function ItemListContainer(props) {
         arrayProductos.map((producto) => {
           return (
             <Item
-              className={classes.item}
               key={producto.id}
               id={producto.id}
               nombre={producto.nombre}
               precio={producto.precio}
               descuento={producto.descuento}
               imagen={producto.imagen}
-              initialQuantity={producto.initialQuantity}
               categoria={producto.categoria}
             />
           );

@@ -35,7 +35,7 @@ function Item(props) {
   }
 
   return (
-    <Card className={`${classes.productItem} ${props.className}`}>
+    <Card className={classes.productItem}>
       <Link to={`/detail/${props.id}`}>
         <img
           className={classes.productImage}
